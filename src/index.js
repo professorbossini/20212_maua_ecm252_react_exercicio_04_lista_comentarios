@@ -1,17 +1,58 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import faker from 'faker'
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Comentario from './Comentario'
+import Cartao from './Cartao'
+import ListaComentarios from './ListaComentarios'
+import Feedback from './Feedback'
+
+export const App = () => {
+    const textoOK = "Aprovar"
+    const textoNOK = "Não aprovar"
+    const funcaoOK = () => alert ("Ok, aprovado")
+    const funcaoNOK = () => alert ("Ok, não aprovado")
+    const feedback = <Feedback textoOK={textoOK} textoNOK={textoNOK} funcaoOK={funcaoOK} funcaoNOK={funcaoNOK}/>
+    return (
+
+
+        <ListaComentarios>
+
+            <div className="row">
+                <div className="col-12">
+                    <Cartao>
+                        <Comentario nome={faker.name.findName()} foto={faker.internet.avatar()} texto={faker.lorem.sentences(2)} data={faker.date.recent().toLocaleTimeString()}/>
+                        {feedback}
+                    </Cartao>
+                </div>
+            </div>
+
+            <div className="row">
+                <div className="col-12">
+                    <Cartao>
+                        <Comentario nome={faker.name.findName()} foto={faker.internet.avatar()} texto={faker.lorem.sentences(2)} data={faker.date.recent().toLocaleTimeString()}/>
+                        {feedback}
+                    </Cartao>
+                </div>
+            </div>
+
+            <div className="row">
+                <div className="col-12">
+                    <Cartao>
+                        <Comentario nome={faker.name.findName()} foto={faker.internet.avatar()} texto={faker.lorem.sentences(2)} data={faker.date.recent().toLocaleTimeString()}/>
+                        {feedback}
+                    </Cartao>
+                </div>
+            </div>
+
+
+        </ListaComentarios>
+
+    )
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    <App />,
+    document.querySelector('#root')
+)
